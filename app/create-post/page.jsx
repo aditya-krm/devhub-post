@@ -20,7 +20,7 @@ const CreatePost = () => {
     setSubmitting(true);
 
     try {
-      const response = await fetch("/api/createpost/new", {
+      const response = await fetch("/api/post/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
