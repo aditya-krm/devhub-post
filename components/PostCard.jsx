@@ -13,6 +13,11 @@ const formatDate = (isoDate) => {
 };
 
 const PostCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
+  const { data: session } = useSession();
+  console.log(session);
+  const pathname = usePathname();
+  const router = useRouter();
+
   return (
     <div className="prompt_card">
       <div className="flex flex-col justify-between items-start gap-5">
@@ -30,6 +35,22 @@ const PostCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
               {formatDate(post.createdAt)}
             </p>
           </div>
+          {session?.user.id === post.creator._id && pathname === "/profile" && (
+            <div className="flex gap-3 ml-5">
+              <button
+                className="text-blue-500 text-sm"
+                onClick={() => handleEdit && handleEdit(post)}
+              >
+                Edit
+              </button>
+              <button
+                className="text-red-500 text-sm"
+                onClick={() => handleDelete && handleDelete(post)}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
         <p className="my-4 font-satoshi text-md text-gray-700">
           {post.content}
