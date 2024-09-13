@@ -14,7 +14,6 @@ const formatDate = (isoDate) => {
 
 const PostCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const { data: session } = useSession();
-  console.log(session);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -31,8 +30,9 @@ const PostCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           />
           <div className="flex flex-col">
             <h3 className="text-lg font-semibold">{post.creator.username}</h3>
-            <p className="text-xs font-light text-black/60">
+            <p className=" text-xs font-light text-black/60">
               {formatDate(post.createdAt)}
+              {/* {formatDate(post.updatedAt)} */}
             </p>
           </div>
           {session?.user.id === post.creator._id && pathname === "/profile" && (
