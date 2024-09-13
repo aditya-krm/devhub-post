@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Form from "@components/Form";
 
-const UpdatePost = () => {
+const UpdatePostContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const postId = searchParams.get("id");
@@ -60,6 +60,15 @@ const UpdatePost = () => {
       submitting={submitting}
       handleSubmit={updatePost}
     />
+  );
+};
+
+// Wrap the content in a Suspense boundary for Vercel uploading
+const UpdatePost = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UpdatePostContent />
+    </Suspense>
   );
 };
 
