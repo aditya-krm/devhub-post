@@ -41,10 +41,10 @@ const Onboarding = () => {
   };
 
   return (
-    <>
+    <div>
       {/* Welcome Screen */}
       {currentStep === -1 ? (
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 w-[60%]">
           <h1 className="text-4xl font-bold mb-4">
             Welcome to <span className="orange_gradient">Devhub!</span>{" "}
           </h1>
@@ -110,7 +110,7 @@ const Onboarding = () => {
           )}
         </>
       )}
-    </>
+    </div>
   );
 };
 
